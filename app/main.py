@@ -3,9 +3,10 @@ import os
 
 def copy_file(command: str) -> None:
     parts = command.split()
+    src = parts[1]
+    dst = parts[2]
     if len(parts) == 3 and parts[0] == "cp":
-        if parts[1] == parts[2] or not os.path.exists(parts[1]):
+        if src == dst or not os.path.exists(src):
             return
-        with (open(f"{parts[1]}", "r") as original,
-              open(f"{parts[2]}", "w") as new_file):
-            new_file.write(original.read())
+        with (open(f"{src}", "r") as org, open(f"{dst}", "w") as new):
+            new.write(org.read())
