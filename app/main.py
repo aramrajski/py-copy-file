@@ -8,5 +8,5 @@ def copy_file(command: str) -> None:
         dst = parts[2]
         if src == dst or not os.path.exists(src):
             return
-        with (open(f"{src}", "r") as org, open(f"{dst}", "w") as new):
+        with open(f"{src}", "r") as org, open(f"{dst}", "w") as new:
             new.write(org.read())
